@@ -8,3 +8,6 @@ prepare:
 	sudo n stable ;\
 	npm install google-home-notifier
 
+crontab.sample:
+	crontab -l >$@
+

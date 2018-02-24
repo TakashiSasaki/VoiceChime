@@ -20,7 +20,7 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-30,40,50 6 * * * (cd /home/takashi/TimeSignalForGoogleHome; make chime)
-*/10 7,8 * * * (cd /home/takashi/TimeSignalForGoogleHome; make chime)
-*/10 7,8,9 * * * (cd /home/takashi/TimeSignalForGoogleHome; make chime)
-*/30 10,11,12,13,14,15,16,17,18,19,20,21 * * * (cd /home/takashi/TimeSignalForGoogleHome; make chime)
+30,40,50 6 * * * (cd /home/takashi/VoiceChime; make chime)
+*/10 7,8 * * * (cd /home/takashi/VoiceChime; make chime)
+*/10 7,8,9 * * * (cd /home/takashi/VoiceChime; make chime)
+*/30 10,11,12,13,14,15,16,17,18,19,20,21 * * * (cd /home/takashi/VoiceChime; make chime)
