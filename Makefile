@@ -6,5 +6,5 @@ chime:
 
 prepare:
 	sudo n stable ;\
-	npm install google-home-notifier -g
+	npm install google-home-notifier
 
