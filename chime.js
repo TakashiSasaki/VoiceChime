@@ -16,7 +16,7 @@ function buildTimeSignalMessage(){
 function buildCalendarMessage(){
   var now = new Date();
   var youbi = ["日", "月","火","水","木","金","土"][now.getDay()];
-  var month = now.getMonth();
+  var month = now.getMonth()+1;
   var date = now.getDate();
   var message = "今日は、" + month + "月" + date + "日、" + youbi + "曜日です。";
   return message;
