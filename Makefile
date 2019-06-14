@@ -2,8 +2,12 @@
 DEFAULT: prepare
 NODE=/usr/bin/node
 export NODE_PATH=$(shell npm root -g)
+export TZ='Asia/Tokyo'
+export LANG=C.UTF-8
 chime:
-	echo ${NODE_PATH}
+	echo NODE_PATH=${NODE_PATH}
+	echo LANG=${LANG}
+	echo TZ=${TZ}
 	$(NODE) chime.js
 
 prepare:

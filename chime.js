@@ -1,5 +1,3 @@
-const googlehome = require('google-home-notifier')
-
 function buildTimeSignalMessage(){ 
   var now = new Date();
   var hours = now.getHours();
@@ -23,21 +21,12 @@ function buildCalendarMessage(){
 }
 
 
+const factory = require('google-home-notify/google-home-notifier')
+const ipaddr="192.168.0.4";
+const message = buildTimeSignalMessage();
+const googlehome = factory(ipaddr, "ja");
+console.log(googlehome);
+console.log(message);
+googlehome.notify(message);
+console.log("notified.");
 
-function talk(message,ip){
-  if(typeof message !== "string") {
-    throw "talk: expecting message string";
-  }
-
-  googlehome.device('Google-Home', 'ja'); 
-  if(typeof ip === "string"){
-    googlehome.ip(ip)
-  } 
-
-  googlehome.notify(message, function(res) {
-    console.log("google-home-notifier finished")
-  	//console.log(res);
-  });
-}//talk
-
-talk(buildTimeSignalMessage(), "192.168.0.5");
