@@ -21,13 +21,20 @@ function buildCalendarMessage(){
 }
 
 
-const factory = require('google-home-notify/google-home-notifier')
 ipaddr="Google-Home-Mini";
 ipaddr="192.168.0.4";
 const message = buildTimeSignalMessage();
-const googlehome = factory(ipaddr, "ja");
-console.log(googlehome);
 console.log(message);
+const factory = require('google-home-notify/google-home-notifier')
+const googlehome = factory(ipaddr, "ja");
+googlehome.on("speech", function(x){
+	console.log("speech event has been emitted.");
+	console.log(x);
+	googlehome.stop();
+	console.log("EventEmitter was stopped.");
+});
+console.log(Object.keys(googlehome));
+console.log(googlehome);
 googlehome.notify(message);
-console.log("notified.");
+console.log("'notify' method has been called.");
 
