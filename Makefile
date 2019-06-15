@@ -44,6 +44,5 @@ avahi:
 	avahi-browse -at
 
 apt:
-	apt-get install aptitude apt-file curl wget locales
-
+	apt-get install aptitude curl wget locales
 
