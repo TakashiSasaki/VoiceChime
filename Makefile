@@ -24,3 +24,8 @@ prepare:
 crontab.sample:
 	crontab -l >$@
 
+avahi:
+	-service dbus start
+	-service avahi-daemon
+	avahi-browse -at
+

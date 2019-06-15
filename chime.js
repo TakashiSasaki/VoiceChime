@@ -22,7 +22,8 @@ function buildCalendarMessage(){
 
 
 const factory = require('google-home-notify/google-home-notifier')
-const ipaddr="192.168.0.4";
+ipaddr="Google-Home-Mini";
+ipaddr="192.168.0.4";
 const message = buildTimeSignalMessage();
 const googlehome = factory(ipaddr, "ja");
 console.log(googlehome);
