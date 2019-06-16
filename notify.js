@@ -38,7 +38,7 @@ function notifyAll(addresses, lang){
 
 module.exports.notify = notify;
 module.exports.notifyAll = notifyAll;
-if(module.id = "."){
+if(module.id === "."){
 	setInterval(function(){
 		notifyAll(getIpAddresses(), 'ja');
 	}, 60000);
