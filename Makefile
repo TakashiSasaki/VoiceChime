@@ -27,6 +27,9 @@ install-npm-packages:
 test-mdns-js:
 	$(NODE) test-mdns-js.js
 
+getIpAddresses:
+	$(NODE) $@.js
+
 test-date:
 	sh -c 'echo $${LANG}'
 	echo $${LC_ALL}
