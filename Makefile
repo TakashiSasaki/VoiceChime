@@ -1,4 +1,4 @@
-.PHONY: chime prepare 
+.PHONY: chime prepare test-notify
 DEFAULT: test-mdns-js
 NODE=/usr/bin/node
 export NODE_PATH=$(shell npm root -g)
@@ -18,12 +18,6 @@ install-node:
 	./setup
 	apt-get install -y nodejs
 
-install-npm-packages:
-	npm install -g google-home-notify mdns-js
-	#nodejs npm install -g -y n
-	#sudo n stable 
-	#npm install google-home-notifier
-
 test-mdns-js:
 	$(NODE) test-mdns-js.js
 
@@ -32,6 +26,9 @@ test-getIpAddresses:
 
 test-messages:
 	$(NODE) message.js
+
+test-notify:
+	$(NODE) notify.js
 
 test-date:
 	sh -c 'echo $${LANG}'
@@ -52,3 +49,8 @@ avahi:
 apt:
 	apt-get install aptitude curl wget locales
 
+npm:
+	npm install -g google-home-notify mdns-js node-cron
+	#nodejs npm install -g -y n
+	#sudo n stable 
+	#npm install google-home-notifier

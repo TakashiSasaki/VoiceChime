@@ -1,7 +1,7 @@
 process = require("process");
+cron = require("node-cron");
 buildCalendarMessage = require("./message").buildCalendarMessage;
 buildChimeMessage = require("./message").buildChimeMessage;
-cron = require("./node-cron");
 getIpAddresses = require("./getIpAddresses").getIpAddresses;
 if(typeof process.env.TZ !== 'string'){
 	throw "Timezone is not set. Check environment variable 'TZ'.";
@@ -9,12 +9,9 @@ if(typeof process.env.TZ !== 'string'){
 	console.log("TZ="+process.env.TZ);
 }
 
-function notifyChime(){
-	ipaddr = getIpAddresses();
-	console.log(ipaddr);
-	message = buildChimeMessage('ja');
-	console.log(message);
-	googlehome = require('google-home-notify/google-home-notifier')(ipaddr, "ja");
+function notify(address, lang){
+	message = buildChimeMessage(lang);
+	googlehome = require('google-home-notify/google-home-notifier')(address, lang);
 	console.log(googlehome);
 	EventEmitter = require("events").EventEmitter;
 	eventEmitter = new EventEmitter;
@@ -28,7 +25,18 @@ function notifyChime(){
 		console.log("EventEmitter was stopped.");
 	});
 	googlehome.notify(message);
-}
+}//notify
 
-module.exports.notifyChime = notifyChime;
+function notifyAll(addresses, lang){
+	console.log("notifyAll : " + addresses);
+	addresses.forEach((address)=>{notify(address, lang);});
+}//notifyAll
+
+module.exports.notify = notify;
+module.exports.notifyAll = notifyAll;
+if(module.id = "."){
+	setInterval(function(){
+		notifyAll(getIpAddresses(), 'ja');
+	}, 60000);
+}
 
