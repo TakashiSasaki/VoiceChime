@@ -28,8 +28,12 @@ function notify(address, lang){
 }//notify
 
 function notifyAll(addresses, lang){
+	if(addresses === undefined) throw "The list of IP address is not given.";
+	if(lang === undefined) throw "Language is not specified.";
 	console.log("notifyAll : " + addresses);
-	addresses.forEach((address)=>{notify(address, lang);});
+	for(var i=0; i<addresses.length; ++i) {
+		notify(addresses[i], lang);
+	}//for
 }//notifyAll
 
 module.exports.notify = notify;

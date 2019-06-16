@@ -7,9 +7,9 @@ export LANG=C.UTF-8
 export LANG=ja_jp.utf8
 export LC_ALL=ja_jp.utf8
 chime:
-	echo NODE_PATH=${NODE_PATH}
-	echo LANG=${LANG}
-	echo TZ=${TZ}
+	@echo NODE_PATH=${NODE_PATH}
+	@echo LANG=${LANG}
+	@echo TZ=${TZ}
 	$(NODE) chime.js
 
 install-node:
