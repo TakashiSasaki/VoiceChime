@@ -1,31 +1,23 @@
-function buildTimeSignalMessage(){ 
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  if(minutes === 0) {
-    var message = "現在、" + hours + "時ちょうど、" + hours + "時ちょうどです。";
-    return message + buildCalendarMessage();
-  } else {
-    var message = "現在、" + hours + "時" + minutes + "分、" + hours + "時" + minutes + "分です。";
-  }
-  return message;
+buildCalendarMessage = require("./message").buildCalendarMessage;
+buildChimeMessage = require("./message").buildChimeMessage;
+mdns = require("mdns");
+process = require("process");
+if(typeof process.env.TZ !== 'string'){
+	throw "Timezone is not set. Check environment variable 'TZ'.";
+} else {
+	console.log("TZ="+process.env.TZ);
 }
-
-function buildCalendarMessage(){
-  var now = new Date();
-  var youbi = ["日", "月","火","水","木","金","土"][now.getDay()];
-  var month = now.getMonth()+1;
-  var date = now.getDate();
-  var message = "今日は、" + month + "月" + date + "日、" + youbi + "曜日です。";
-  return message;
-}
-
 
 ipaddr="Google-Home-Mini";
 ipaddr="192.168.0.4";
-message = buildTimeSignalMessage();
+
+ipaddr = undefined
+message = buildChimeMessage('ja');
 console.log(message);
 googlehome = require('google-home-notify/google-home-notifier')(ipaddr, "ja");
+if(typeof googlehome !== "object") {
+	throw "failed to create an instance of 
+}
 EventEmitter = require("events").EventEmitter;
 eventEmitter = new EventEmitter;
 console.log(Object.getOwnPropertyNames(eventEmitter));
