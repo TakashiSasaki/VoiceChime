@@ -18,6 +18,9 @@ install-node:
 	./setup
 	apt-get install -y nodejs
 
+test-cron:
+	$(NODE) test-cron.js
+
 test-mdns-js:
 	$(NODE) test-mdns-js.js
 
