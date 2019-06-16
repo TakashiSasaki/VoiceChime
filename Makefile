@@ -1,5 +1,5 @@
-.PHONY: chime prepare test-notify
-DEFAULT: test-mdns-js
+.PHONY: chime
+DEFAULT: chime
 NODE=/usr/bin/node
 export NODE_PATH=$(shell npm root -g)
 export TZ=Asia/Tokyo
@@ -43,7 +43,7 @@ crontab.sample:
 
 avahi:
 	-service dbus start
-	-service avahi-daemon
+	-service avahi-daemon start
 	avahi-browse -at
 
 apt:
