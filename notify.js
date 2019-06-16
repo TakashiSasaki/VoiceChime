@@ -38,7 +38,9 @@ function notifyAll(addresses, lang){
 
 module.exports.notify = notify;
 module.exports.notifyAll = notifyAll;
+console.log("notify.js : " + module.id);
 if(module.id === "."){
+	console.log("notify.js : debug mode");
 	setInterval(function(){
 		notifyAll(getIpAddresses(), 'ja');
 	}, 60000);
