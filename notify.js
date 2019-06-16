@@ -12,17 +12,17 @@ if(typeof process.env.TZ !== 'string'){
 function notify(address, lang){
 	message = buildChimeMessage(lang);
 	googlehome = require('google-home-notify/google-home-notifier')(address, lang);
-	console.log(googlehome);
+	//console.log(googlehome);
 	EventEmitter = require("events").EventEmitter;
 	eventEmitter = new EventEmitter;
-	console.log(Object.getOwnPropertyNames(eventEmitter));
-	console.log(Object.getPrototypeOf(eventEmitter));
+	//console.log(Object.getOwnPropertyNames(eventEmitter));
+	//console.log(Object.getPrototypeOf(eventEmitter));
 	Object.setPrototypeOf(googlehome, Object.getPrototypeOf(eventEmitter));
 	googlehome.on("speech", function(x){
-		console.log("speech event has been emitted.");
-		console.log(x);
+		//console.log("speech event has been emitted.");
+		console.log("on-speech : " + x);
 		googlehome.removeAllListeners();
-		console.log("EventEmitter was stopped.");
+		//console.log("EventEmitter was stopped.");
 	});
 	googlehome.notify(message);
 }//notify
